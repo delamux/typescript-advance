@@ -1,11 +1,16 @@
 //  ************* GENERICS *************
 
-interface State<T> {
-  value: T;
+class OperatorPlus<T> {
+  operand1: T;
+  operand2: T;
+  operation: (o1: T, o2: T) => T;
 }
 
-const stringState: State<string> = {
-  value: "hello",
-};
+const plus = new OperatorPlus<number>();
 
-const result = stringState.value;
+plus.operand1 = 3;
+plus.operand2 = 5;
+
+plus.operation = (a, b) => a + b;
+
+console.log("result", plus.operation(plus.operand1, plus.operand2));

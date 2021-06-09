@@ -1,17 +1,13 @@
-/* 
-const shout = (text: string, upperCase: boolean) =>
-  (upperCase ? text.toUpperCase() : text) + "!!!!";
+// Overload functions
 
-console.log(shout("hola", true));
-*/
+function switchType(c: string): number;
+function switchType(c: number): string;
+function switchType(c) {
+  return typeof c === "string" ? Number(c) : String(c);
+}
 
-//Typyng functions
-const shout = (text: string, getNumExclamations: () => number): string =>
-  text.toUpperCase() + "!".repeat(getNumExclamations());
+const result1 = switchType(3);
+const result2 = switchType("4");
 
-const getRandom = (): number => Math.ceil(Math.random() * 10);
-
-console.log(shout("hola", getRandom));
-console.log(shout("hola", getRandom));
-console.log(shout("hola", getRandom));
-console.log(shout("hola", getRandom));
+console.log("res1", result1);
+console.log("res2", result2);

@@ -1,17 +1,19 @@
-//  ************* FUNCTIONSSS *************
+//  ************* GENERICS *************
 
-interface RepeatString {
-  (value: string, times: number): string;
-  description: string;
+/* function first(list: number[]): number {
+  return list[0];
 }
-// The interface is useful because you can use more properties
 
-//OR
-// type RepeatString = (value: string, times: number) => string;
+first[("hello", "world")]; */
 
-const repeatString: RepeatString = (value, times) =>
-  Array(times).fill(value).join(" ");
+// To no use any we use the generics wich is resolved at the moment to call the method
 
-repeatString.description = "World";
+function first<T>(list: T[]): T {
+  return list[0];
+}
 
-console.log("result", repeatString("Hello", 3), repeatString.description);
+const firstArrow = <T>(list: T[]): T => list[0];
+
+// first(["hello", "world", 9]);
+
+const result = first<string | number>(["hello", "world", 9]);

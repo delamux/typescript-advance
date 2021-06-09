@@ -1,13 +1,17 @@
-// Overload functions
+//  ************* FUNCTIONSSS *************
 
-function switchType(c: string): number;
-function switchType(c: number): string;
-function switchType(c) {
-  return typeof c === "string" ? Number(c) : String(c);
+interface RepeatString {
+  (value: string, times: number): string;
+  description: string;
 }
+// The interface is useful because you can use more properties
 
-const result1 = switchType(3);
-const result2 = switchType("4");
+//OR
+// type RepeatString = (value: string, times: number) => string;
 
-console.log("res1", result1);
-console.log("res2", result2);
+const repeatString: RepeatString = (value, times) =>
+  Array(times).fill(value).join(" ");
+
+repeatString.description = "World";
+
+console.log("result", repeatString("Hello", 3), repeatString.description);
